@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "django-stripe app"
+version = "0.1.0"
+description = "test case"
+authors = ["Roman-Zhirovskis <tesslogun@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.7"
+djangorestframework = "^3.14.0"
+drf-yasg = "^1.21.7"
+setuptools = "^68.2.2"
+pyjwt = "^2.8.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+black = "23.3.0"
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
