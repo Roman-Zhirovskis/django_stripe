@@ -4,13 +4,13 @@ from django.urls import include, path
 # from .yasg import urlpatterns as yasg_doc
 
 
-# v1 = [
-#     path("users/", include("users.urls")),
-# ]
+v1 = [
+    path("items/", include("items.urls")),
+]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    # path("api/v1/", include(v1)),
+    path("api/v1/", include(v1)),
 ]
 
 # urlpatterns += yasg_doc

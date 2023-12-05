@@ -125,3 +125,10 @@ REST_FRAMEWORK = {
     # "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     # "DEFAULT_PAGINATION_CLASS": "common.pagination.BasePagination",
 }
+
+
+###########################
+#     STRIPE_CONFIG
+###########################
+STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
