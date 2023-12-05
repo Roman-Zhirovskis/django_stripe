@@ -1,0 +1,31 @@
+
+<!-- item_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item.name }}</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>{{ item.name }}</h1>
+    <p>price: {{ item.price }}</p>
+    <p>Description: {{ item.description }}</p>
+    <button id="buy-button">Buy</button>
+
+    <script>
+        const itemId = {{ item.id }};  // Подставьте ID товара
+        const stripe = Stripe('pk_test_51OJgUmF0Ct7Ie0J0plILFv8km9RgtuhBqMDDisZO7lmu9VKXsMYmW1vevIE6BFY4F3sn1ijnwj5Yb6cDxrXT1MqI000HjdPi6l');
+        document.getElementById('buy-button').addEventListener('click', async () => {
+            try {
+                const response = await fetch(`http://localhost:8000/api/v1/items/buy/${itemId}`);
+                const data = await response.json();
+                await stripe.redirectToCheckout({ sessionId: data.session_id });
+            } catch (error) {
+                console.error('Произошла ошибка:', error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -9,3 +9,6 @@ users = {
         "birthday": "2003-10-25",
     },
 }
+
+# i1 = Item.objects.create(name='shoes', price=100)
+# i2 = Item.objects.create(name='t-shirt', price=20)
