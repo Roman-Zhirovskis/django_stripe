@@ -20,3 +20,27 @@ API методы:
   Модели Discount, Tax, которые можно прикрепить к модели Order и связать с соответствующими атрибутами при создании платежа в Stripe - в таком случае они корректно отображаются в Stripe Checkout форме.
   Добавить поле Item.currency, создать 2 Stripe Keypair на две разные валюты и в зависимости от валюты выбранного товара предлагать оплату в соответствующей валюте
   Реализовать не Stripe Session, а Stripe Payment Intent.
+
+  
+**NOTE**: Root of the django project is at the `backend` folder
+
+Here is a short instruction on how to quickly set up the project:
+
+## Before start
+- Create `.env`
+- Check and fill `.env` environment variables from `.env.example`
+
+### Environment variables
+#### Django:
+
+- `DEBUG` - variable for defining environment for project `(True/False)`
+- `DJANGO_SECRET_KEY` - secret key of django project, generates via
+- `STRIPE_PUBLISHABLE_KEY` - stripe publik key for
+- `STRIPE_SECRET_KEY` - stripe secret key for
+```
+
+### To start project run
+```
+$ docker-compose up --build
+```
+
