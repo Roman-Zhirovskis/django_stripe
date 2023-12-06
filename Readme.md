@@ -4,7 +4,7 @@ Django + Stripe API бэкенд
 
 # Этот проект представляет собой реализацию Django + Stripe API бэкенда с базовым функционалом для продажи товаров.
 - Django Модель Item с полями (name, description, price)
-API методы:
+- API методы:
   - GET /buy/{id} - получение Stripe Session Id для оплаты выбранного Item
   - GET /item/{id} - получение информации о выбранном Item
 
