@@ -37,10 +37,8 @@ Here is a short instruction on how to quickly set up the project:
 - `DJANGO_SECRET_KEY` - secret key of django project, generates via
 - `STRIPE_PUBLISHABLE_KEY` - stripe publik key for
 - `STRIPE_SECRET_KEY` - stripe secret key for
-```
 
 ### To start project run
 ```
 $ docker-compose up --build
 ```
-
