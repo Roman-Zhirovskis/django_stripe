@@ -1,14 +1,20 @@
-Django + Stripe API бэкенд
+# Django + Stripe API бэкенд (MVP gen)
+
+**NOTE**: Не конечная версия проекта !
+
+Архитектура проекта, логика сервисов будет изменена 
+
+Версия релизнута исключительно для демонстрации работы ручек:
 
 ## Описание
 
-# Этот проект представляет собой реализацию Django + Stripe API бэкенда с базовым функционалом для продажи товаров.
+### Этот проект представляет собой реализацию Django + Stripe API бэкенда с базовым функционалом для продажи товаров.
 - Django Модель Item с полями (name, description, price)
 - API методы:
   - GET /buy/{id} - получение Stripe Session Id для оплаты выбранного Item
   - GET /item/{id} - получение информации о выбранном Item
 
-# Бонусные функции
+## Бонусные функции
 
   - Запуск используя Docker
   - Использование environment variables
@@ -19,7 +25,7 @@ Django + Stripe API бэкенд
   - Добавить поле Item.currency, создать 2 Stripe Keypair на две разные валюты и в зависимости от валюты выбранного товара предлагать оплату в соответствующей валюте
   - Реализовать не Stripe Session, а Stripe Payment Intent.
 
-  
+
 **NOTE**: Root of the django project is at the `backend` folder
 
 Here is a short instruction on how to quickly set up the project:
@@ -40,3 +46,13 @@ Here is a short instruction on how to quickly set up the project:
 ```
 $ docker-compose up --build
 ```
+- Перейти в localhost/admin и создать экземпляры всех моделей
+
+## Описание ручек 
+
+- `localhost:8000/api/v1/items/item/<id>` - просмотр одного товара
+
+- `localhost:8000/api/v1/items/buy/<id>` - создать сессию оплаты товара(url будет изменен)
+
+- `localhost:8000/api/v1/items/order_buy/<id>` - создать сессию оплаты заказа(url будет изменен)
+
