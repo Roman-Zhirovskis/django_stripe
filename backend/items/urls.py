@@ -1,4 +1,4 @@
-from items.views import ItemDetailView, ItemRetriveView, OrderRetriveView
+from items.views import ItemDetailView, ItemRetriveView, OrderRetriveView, ItemIntentRetriveView
 from django.urls import path
 
 
@@ -7,5 +7,5 @@ urlpatterns = [
     # Это нужно перенести в приложение payments, как и логику сервисов
     path("buy/<int:id>", ItemRetriveView.as_view(), name="buy_item"),
     path("order_buy/<int:id>", OrderRetriveView.as_view(), name="make_order"),
-    # path("order_tax/<int:id>", OrderTaxRetriveView.as_view(), name="tax_order"),
+    path("intent_buy/<int:id>", ItemIntentRetriveView.as_view(), name="intent_buy"),
 ]

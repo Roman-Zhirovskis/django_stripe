@@ -7,11 +7,9 @@
 
 - Архитектура проекта, логика сервисов будет изменена 
 
-- К модели Item будет добавлено поле currency
+- Правки по оставленным замечаниям в коде
 
-- Будет создано 2 Stripe Keypair на две разные валюты
-
-- Будет упразнена Stripe Session, реализована Stripe Payment Intent
+- Реализовать Stripe Payment Intent для Order
 
 ## Описание
 
@@ -31,7 +29,7 @@
   - Модель Order, в которой можно объединить несколько Item и сделать платёж в Stripe на содержимое Order c общей стоимостью всех Items `(Done)`
   - Модели Discount, Tax, которые можно прикрепить к модели Order и связать с соответствующими атрибутами при создании платежа в Stripe - в таком случае они корректно отображаются в Stripe Checkout форме. `(Done)`
   - Добавить поле Item.currency, создать 2 Stripe Keypair на две разные валюты и в зависимости от валюты выбранного товара предлагать оплату в соответствующей валюте `(Done)` 
-  - Реализовать не Stripe Session, а Stripe Payment Intent. `(In Proccess)` 
+  - Реализовать не Stripe Session, а Stripe Payment Intent. `(Done)` 
 
 
 **NOTE**: Root of the django project is at the `backend` folder
@@ -64,3 +62,22 @@ $ docker-compose up --build
 
 - `localhost:8000/api/v1/items/order_buy/<id>` - создать сессию оплаты заказа(url будет изменен)
 
+- `localhost:8000/api/v1/items/intent_buy/<id>` - создать оплату через 
+PaymentIntend
+
+
+## Описание релизов
+
+### Релиз 0.0.2
+
+- К модели Item добавлено поле currency
+
+- Создано 2 Stripe Keypair на две разные валюты
+
+- Реализована Stripe Payment Intent
+
+- Добавлены все модели в DjnagoAdmin
+
+### Релиз 0.0.3
+
+- ...

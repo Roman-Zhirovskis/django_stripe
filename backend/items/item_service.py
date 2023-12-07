@@ -88,3 +88,30 @@ class OrderTaxDiscountStripeService:
         unit_amount = item_price + tax_amount - discount_amount
 
         return int(unit_amount) * 100
+
+
+class ItemPaymentIntendStripeService:
+    """Сервис для работы с товарами через PaymentIntend"""
+
+    def __init__(self, item: Item):
+        self.item = item
+
+    def create_paymentIntent(self):
+        intent = stripe.PaymentIntent.create(
+            amount=int(self.item.price) * 100,
+            currency=self.item.currency,
+            metadata={"product_id": self.item.id},
+        )
+        return intent
+
+    def polling(self, payment_intent):
+        payment = stripe.PaymentIntent.retrieve(payment_intent)
+        print(payment)
+
+        status = payment["status"]
+        succeeded = bool(status == "succeeded")
+        return status
+
+    # def create_paymenyLink(self, pay_id):
+    #     link = stripe.PaymentLink.create(payment_intent_data=pay_id)
+    #     return link

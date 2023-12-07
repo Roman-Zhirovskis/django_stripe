@@ -7,7 +7,11 @@ from .serrializer import ItemSerializer
 
 
 from items.models import Item, Order
-from .item_service import ItemStripeService, OrderTaxDiscountStripeService
+from .item_service import (
+    ItemStripeService,
+    OrderTaxDiscountStripeService,
+    ItemPaymentIntendStripeService,
+)
 
 
 # Оптимизироват запросы в БД, раскидать логику по соответсвующим модулям
@@ -26,7 +30,8 @@ class ItemDetailView(RetrieveAPIView):
 
 
 class ItemRetriveView(RetrieveAPIView):
-    """ItemRetriveView выполняет функционал создание платежа для одного Item"""
+    """ItemRetriveView выполняет функционал создание платежа для одного Item
+    используя stripe.Session.create"""
 
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
@@ -39,6 +44,29 @@ class ItemRetriveView(RetrieveAPIView):
         )
         session_id = stripe_service.create_session()
         return JsonResponse({"session_id": session_id})
+
+
+class ItemIntentRetriveView(RetrieveAPIView):
+    """ItemRetriveView выполняет функционал создание платежа для одного Item
+    с помощью stripe.PaymentIntent.create"""
+
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    lookup_field = "id"
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        payment_intend = ItemPaymentIntendStripeService(instance)
+        payment = payment_intend.create_paymentIntent()
+
+        status = payment_intend.polling(payment.id)
+        return JsonResponse(
+            {
+                "payment_intend": payment.client_secret,
+                "payment_id": payment.id,
+                "status": status,
+            }
+        )
 
 
 class OrderRetriveView(RetrieveAPIView):
