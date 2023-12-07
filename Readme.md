@@ -17,21 +17,21 @@
 
 ### Этот проект представляет собой реализацию Django + Stripe API бэкенда с базовым функционалом для продажи товаров.
 ## Основные задачи
-- Django Модель Item с полями (name, description, price)
+- Django Модель Item с полями (name, description, price) `(Done)`
 - API методы:
-  - GET /buy/{id} - получение Stripe Session Id для оплаты выбранного Item
-  - GET /item/{id} - получение информации о выбранном Item
+  - GET /buy/{id} - получение Stripe Session Id для оплаты выбранного Item `(Done)`
+  - GET /item/{id} - получение информации о выбранном Item `(Done)`
 
 ## Бонусные функции
 
-  - Запуск используя Docker
-  - Использование environment variables
-  - Просмотр Django Моделей в Django Admin панели
-  - Запуск приложения на удаленном сервере, доступном для тестирования
-  - Модель Order, в которой можно объединить несколько Item и сделать платёж в Stripe на содержимое Order c общей стоимостью всех Items
-  - Модели Discount, Tax, которые можно прикрепить к модели Order и связать с соответствующими атрибутами при создании платежа в Stripe - в таком случае они корректно отображаются в Stripe Checkout форме.
-  - Добавить поле Item.currency, создать 2 Stripe Keypair на две разные валюты и в зависимости от валюты выбранного товара предлагать оплату в соответствующей валюте
-  - Реализовать не Stripe Session, а Stripe Payment Intent.
+  - Запуск используя Docker `(Done)`
+  - Использование environment variables `(Done)`
+  - Просмотр Django Моделей в Django Admin панели `(Done)`
+  - Запуск приложения на удаленном сервере, доступном для тестирования `(Will made after refactoring)` 
+  - Модель Order, в которой можно объединить несколько Item и сделать платёж в Stripe на содержимое Order c общей стоимостью всех Items `(Done)`
+  - Модели Discount, Tax, которые можно прикрепить к модели Order и связать с соответствующими атрибутами при создании платежа в Stripe - в таком случае они корректно отображаются в Stripe Checkout форме. `(Done)`
+  - Добавить поле Item.currency, создать 2 Stripe Keypair на две разные валюты и в зависимости от валюты выбранного товара предлагать оплату в соответствующей валюте `(Done)` 
+  - Реализовать не Stripe Session, а Stripe Payment Intent. `(In Proccess)` 
 
 
 **NOTE**: Root of the django project is at the `backend` folder
