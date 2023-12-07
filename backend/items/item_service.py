@@ -36,7 +36,7 @@ class ItemStripeService:
     def _create_line_items(self) -> dict:
         data_dict = {
             "price_data": {
-                "currency": "usd",
+                "currency": self.item.currency,
                 "unit_amount": int(self.item.price) * 100,
                 "product_data": {
                     "name": self.item.name,

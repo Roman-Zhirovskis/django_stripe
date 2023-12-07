@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item, Order
+from .models import Item, Order, Discount, Tax
 
 
 class OrderItemsInline(admin.TabularInline):
@@ -8,11 +8,7 @@ class OrderItemsInline(admin.TabularInline):
 
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "price",
-        "description",
-    )
+    list_display = ("name", "price", "description", "currency")
     search_fields = ("name",)
 
 
@@ -26,4 +22,13 @@ class OrderAdmin(admin.ModelAdmin):
     readonly_fields = ("payment_status", "items", "calculate_total_cost")
 
 
-# Создать админ для налогов, купонов (когда голова пройдет)
+@admin.register(Tax)
+class TaxAdmin(admin.ModelAdmin):
+    list_display = ("name", "percent")
+    search_fields = ("name",)
+
+
+@admin.register(Discount)
+class DiscountAdmin(admin.ModelAdmin):
+    list_display = ("name", "percent")
+    search_fields = ("name",)

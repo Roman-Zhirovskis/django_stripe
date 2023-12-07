@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>{{ item.name }}</h1>
-    <p>price: {{ item.price }}</p>
+    <p>price: {{ item.price }} {{ item.currency }}</p>
     <p>Description: {{ item.description }}</p>
     <button id="buy-button">Buy</button>
 
@@ -19,7 +19,7 @@
         const stripe = Stripe('pk_test_51OJgUmF0Ct7Ie0J0plILFv8km9RgtuhBqMDDisZO7lmu9VKXsMYmW1vevIE6BFY4F3sn1ijnwj5Yb6cDxrXT1MqI000HjdPi6l');
         document.getElementById('buy-button').addEventListener('click', async () => {
             try {
-                const response = await fetch(`http://localhost:8000/api/v1/items/item_buy/${itemId}`);
+                const response = await fetch(`http://localhost:8000/api/v1/items/buy/${itemId}`);
                 const data = await response.json();
                 await stripe.redirectToCheckout({ sessionId: data.session_id });
             } catch (error) {
