@@ -14,7 +14,7 @@ class ItemStripeService:
 
     def __init__(self, item: Item, success_url: str, cancel_url: str):
         self.item = item
-        self.success_url = success_url
+        self.success_url = success_url  # убрать в енв
         self.cancel_url = cancel_url
 
     def create_session(self):
@@ -109,7 +109,7 @@ class ItemPaymentIntendStripeService:
         print(payment)
 
         status = payment["status"]
-        succeeded = bool(status == "succeeded")
+        # succeeded = bool(status == "succeeded")
         return status
 
     # def create_paymenyLink(self, pay_id):

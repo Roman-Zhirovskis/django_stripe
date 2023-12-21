@@ -27,3 +27,8 @@
     - Создать общую валюту для заказа (тут есть о чем подумать)
     - Добавить ВебХук для отслеживания статуса (Добавить статус заказа в модель) 
     - П.С Для PaymentInten используеться polling, нужно посерчить (Done)
+
+## Полезные ссылки
+    - https://stripe.com/docs/billing/subscriptions/coupons - дока по купонам
+    - https://stripe.com/docs/tax/set-up - дока по настройке/интеграции налогов
+    - https://stripe.com/docs/tax/checkout?ui=hosted - дока по автоматическому сбору налогов

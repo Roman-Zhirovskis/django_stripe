@@ -66,6 +66,7 @@ $ docker-compose up --build
 - `localhost:8000/api/v1/items/intent_buy/<id>` - создать оплату через 
 PaymentIntend
 
+https://dashboard.stripe.com/test/logs?method%5B0%5D=post&method%5B1%5D=delete&direction%5B0%5D=connect_in&direction%5B1%5D=self
 
 ## Описание релизов
 

@@ -14,7 +14,7 @@ from .item_service import (
 )
 
 
-# Оптимизироват запросы в БД, раскидать логику по соответсвующим модулям
+# Оптимизироват запросы в БД, раскидать логику по соответсвующим модулям (Общее замечание)
 class ItemDetailView(RetrieveAPIView):
     """ItemRetriveView выполняет функционал отображения одного Item,
     а также кнопки Buy, которая редиректит на форму оплаты твоара"""
@@ -56,6 +56,7 @@ class ItemIntentRetriveView(RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
+        # Добавить в DI
         payment_intend = ItemPaymentIntendStripeService(instance)
         payment = payment_intend.create_paymentIntent()
 
