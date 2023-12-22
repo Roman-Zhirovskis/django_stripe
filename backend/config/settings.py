@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     # Local Apps
     "items.apps.ItemsConfig",
     "payments.apps.PaymentsConfig",
+    "financial_units.apps.FinancialUnitsConfig",
+    "orders.apps.OrdersConfig",
 ]
 
 MIDDLEWARE = [
