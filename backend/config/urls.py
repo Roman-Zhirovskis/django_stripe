@@ -6,6 +6,8 @@ from django.urls import include, path
 
 v1 = [
     path("items/", include("items.urls")),
+    path("orders/", include("orders.urls")),
+    path("payments/", include("payments.urls")),
 ]
 
 urlpatterns = [
